@@ -20,6 +20,7 @@
 enum html_element {
 	BEGIN,
 	TAG,
+	SELFTAG,
 	ATTRKEY,
 	ATTRVAL,
 	TEXT
@@ -31,12 +32,14 @@ struct html {
 
 void html_begin(struct html *);
 void html_begintag(struct html *, const char *);
+void html_beginselftag(struct html *, const char *);
 void html_beginattr(struct html *, const char *);
 
 void html_text(struct html *, const char *, ...);
 
 void html_end(struct html *);
 void html_endtag(struct html *, const char *);
+void html_endselftag(struct html *);
 void html_endattr(struct html *);
 
 #endif /* HTML_H */
@@ -81,9 +84,8 @@ html_end(struct html *html)
 void
 html_begintag(struct html *html, const char *str)
 {
-	if (html->state == TAG) {
+	if (html->state == TAG)
 		html_writec(html, '>');
-	}
 
 	html_writec(html, '<');
 	html_write(html, str);
@@ -105,11 +107,29 @@ html_endtag(struct html *html, const char *str)
 }
 
 void
+html_beginselftag(struct html *html, const char *str)
+{
+	if (html->state == TAG)
+		html_writec(html, '>');
+
+	html_writec(html, '<');
+	html_write(html, str);
+	html->state = SELFTAG;
+}
+
+
+void
+html_endselftag(struct html *html)
+{
+	html_writec(html, '>');
+	html->state = BEGIN;
+}
+
+void
 html_beginattr(struct html *html, const char *str)
 {
-	if (html->state == TAG) {
+	if (html->state == TAG || html->state == SELFTAG)
 		html_writec(html, ' ');
-	}
 
 	html_write(html, str);
 	html_writec(html, '=');
