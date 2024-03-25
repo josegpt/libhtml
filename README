@@ -1,6 +1,6 @@
 html
 ====
-	immediate mode HTML generation library in c.
+	immediate mode `html' generation library in c.
 
 test
 ----
