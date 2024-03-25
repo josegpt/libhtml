@@ -1,0 +1,17 @@
+html
+====
+	immediate mode HTML generation library in c.
+
+test
+----
+	$ make
+	$ ./test
+
+depends on
+----------
+	* c
+	* libc
+
+license
+-------
+	ISC
