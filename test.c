@@ -21,85 +21,85 @@ main(void)
 	putchar('\n');
 
 	html_begin(&html);
-	html_begintag(&html, "body");
+	html_beginbody(&html);
 	html_text(&html, "Hello %s!", "Jose");
-	html_endtag(&html, "body");
+	html_endbody(&html);
 	html_end(&html);
 
 	putchar('\n');
 
 	/* Self Close */
 	html_begin(&html);
-	html_beginselftag(&html, "meta");
-	html_beginattr(&html, "content");
+	html_beginmeta(&html);
+	html_begincontent(&html);
 	html_text(&html, "josegpt");
-	html_endattr(&html);
-	html_beginattr(&html, "name");
+	html_endcontent(&html);
+	html_beginname(&html);
 	html_text(&html, "author");
-	html_endattr(&html);
-	html_endselftag(&html);
+	html_endname(&html);
+	html_endmeta(&html);
 	html_end(&html);
 
 	putchar('\n');
 
 	html_begin(&html);
-	html_begintag(&html, "body");
-	html_beginattr(&html, "class");
+	html_beginbody(&html);
+	html_beginclass(&html);
 	html_text(&html, "cover");
 	html_text(&html, "stack");
 	html_text(&html, "cluster");
-	html_endattr(&html);
-	html_endtag(&html, "body");
+	html_endclass(&html);
+	html_endbody(&html);
 	html_end(&html);
 
 	putchar('\n');
 
 	html_begin(&html);
-	html_begintag(&html, "body");
-	html_beginattr(&html, "class");
+	html_beginbody(&html);
+	html_beginclass(&html);
 	html_text(&html, "cover");
 	html_text(&html, "stack");
 	html_text(&html, "cluster");
-	html_endattr(&html);
+	html_endclass(&html);
 	html_text(&html, "Hello %s!", "Jose");
-	html_endtag(&html, "body");
+	html_endbody(&html);
 	html_end(&html);
 
 	putchar('\n');
 
 	html_begin(&html);
-	html_beginattr(&html, "class");
+	html_beginclass(&html);
 	html_text(&html, "cover");
 	html_text(&html, "stack");
-	html_endattr(&html);
-	html_begintag(&html, "body");
-	html_beginattr(&html, "class");
+	html_endclass(&html);
+	html_beginbody(&html);
+	html_beginclass(&html);
 	html_text(&html, "cover");
 	html_text(&html, "stack");
 	html_text(&html, "cluster");
-	html_endattr(&html);
+	html_endclass(&html);
 	html_text(&html, "Hello %s!", "Jose");
-	html_endtag(&html, "body");
+	html_endbody(&html);
 	html_end(&html);
 
 	putchar('\n');
 
 	html_begin(&html);
-	html_beginattr(&html, "class");
+	html_beginclass(&html);
 	html_text(&html, "cover");
 	html_text(&html, "stack");
-	html_endattr(&html);
-	html_begintag(&html, "body");
-	html_beginattr(&html, "class");
+	html_endclass(&html);
+	html_beginbody(&html);
+	html_beginclass(&html);
 	html_text(&html, "cover");
 	html_text(&html, "stack");
 	html_text(&html, "cluster");
-	html_endattr(&html);
-	html_beginattr(&html, "data-justify");
+	html_endclass(&html);
+	html_begindata(&html, "justify");
 	html_text(&html, "space-between");
-	html_endattr(&html);
+	html_enddata(&html);
 	html_text(&html, "Hello %s!", "Jose");
-	html_endtag(&html, "body");
+	html_endbody(&html);
 	html_end(&html);
 
 	return EXIT_SUCCESS;
