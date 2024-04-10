@@ -28,7 +28,7 @@ enum html_tag {
 	HTML, HEAD, META, TITLE, LINK, BODY,
 	HEADER, FOOTER, NAV, SECTION, MAIN, ARTICLE, DIV,
 	H1, H2, H3, H4, H5, H6,
-	P, HR, PRE, BLOCKQUOTE, ANCHOR, CODE,
+	P, HR, PRE, BLOCKQUOTE, A, CODE,
 	UL, OL, LI,
 	SMALL, EM, IMG, SPAN,
 	TAGMAX
@@ -269,9 +269,9 @@ html_beginnav(struct html *html)
 }
 
 void
-html_beginanchor(struct html *html)
+html_begina(struct html *html)
 {
-	html_begintag(html, html_tags[ANCHOR]);
+	html_begintag(html, html_tags[A]);
 }
 
 void
@@ -573,9 +573,9 @@ html_endnav(struct html *html)
 }
 
 void
-html_endanchor(struct html *html)
+html_enda(struct html *html)
 {
-	html_endtag(html, html_tags[ANCHOR]);
+	html_endtag(html, html_tags[A]);
 }
 
 void
