@@ -1,14 +1,20 @@
-CFLAGS=	-W -g -Wall -Wextra -Werror -Wswitch-enum -ansi -pedantic
+CFLAGS=	-W -g -Wall -Wextra -Werror -ansi -pedantic
 
-all: test
+all: libhtml.so libhtml.so test
 
-.c.o:
-	${CC} ${CFLAGS} -c $<
+.c.o: libhtml.c
+	${CC} ${CFLAGS} -c $?
 
-test: test.o
-	${CC} -o $@ $?
+libhtml.so: libhtml.c
+	${CC} ${CFLAGS} -fPIC -shared -o $@ $?
+
+libhtml.a: libhtml.o
+	ar rcs libhtml.a libhtml.o
+
+test: libhtml.o test.c
+	${CC} ${CFLAGS} -o $@ $?
 
 clean:
-	rm -rf *.o *.core test
+	rm -rf *.o *.a *.so *.gch *.core test
 
 .PHONY: all clean
