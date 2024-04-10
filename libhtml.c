@@ -709,7 +709,7 @@ html_text(struct html *html, const char *format, ...)
 		html_writec(' ');
 	break;
 	default: ;
-		/* Unrecheable */
+		/* unreachable */
 	}
 
 	va_start(ap, format);
