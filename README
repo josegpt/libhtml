@@ -1,5 +1,5 @@
-html
-====
+libhtml
+=======
 	immediate mode `html' generation library in c.
 
 test
@@ -14,4 +14,4 @@ depends on
 
 license
 -------
-	ISC
+	isc
